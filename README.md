@@ -3,7 +3,9 @@
 The [Crusader application](https://github.com/Zoxc/crusader)
 is currently distributed as a binary that opens a
 Terminal window.
-This is surprising, and doesn't provide any value.
+This is surprising and doesn't provide any value
+because all the information that would appear in the Terminal
+is also logged within Crusader.
 
 The _create-crusader-macos-app.sh_ script solves those problems
 by combining the required
@@ -17,12 +19,13 @@ and double-clicked.
   The Finder will produce an "unverified developer" warning.
   Go to **System Preference -> Security** to accept and open the app.
 
-
 ## How it works
 
-The script bundles the Crusader macOS binary
-both for x86 and arm64 (Apple Silicon),
-<!-- an icon for the application, -->
+The script bundles
+both the x86 and arm64 (Apple Silicon)
+`crusader-gui` binaries,
+the required _Info.plist_ file,
+an icon for the application,
 and the necessary startup script.
 It also sets the Finder version info to
 the string "Crusader VERSION". 
@@ -44,9 +47,11 @@ Crusader.app/
     ├── Resources/
     │   │── Crusader.icns
     │   |── arm64
-    │   |   └── crusader-gui
+    |   |   └── Crusader-macOS-ARM-64-bit
+    │   |       └── crusader-gui
     │   └── x86
-    │       └── crusader-gui  
+    |   |   └── Crusader-macOS-X86-64-bit
+    │   |       └── crusader-gui
     └── Info.plist
 
 ```
@@ -55,16 +60,16 @@ Crusader.app/
 
 To use the script:
 
-1. Edit the three constants
-  (QSTUDIO\_VERSION, PRQLC\_VERSION, QSTUDIO\_DOWNLOAD)
+1. Edit these constants
+  (APP\_BUNDLE\_NAME, CRUSADER\_VERSION)
   to match the software versions you are bundling.
 2. Run these commands
 
   ```
   cd this-repo
-  sh ./create-qstudio-macos-app.sh
+  sh ./create-crusader-macos-app.sh
   ```
-3. The qStudio.app bundle is built in the top level
+3. The Crusader.app bundle is built in the top level
   of the directory. 
   Immediately after being built, the bundle's icon
   may not appear in the Finder.
@@ -82,18 +87,9 @@ macOS 15.0.1 (Intel)
 
 ## icns generation
 
-The `.icns` file in this repo was generated from the `.png` image of the
-qStudio icon taken from the screen of the qStudio site.
-It was converted to a `.icns` format using this site:
-https://cloudconvert.com/png-to-icns
-
-## Uploading qStudio.app
-
-Until the qStudio site includes the macOS bundle
-as a standard build, I have placed it on my website at:
-
-[https://randomneuronsfiring.com/wp-content/uploads/qStudio.zip](https://randomneuronsfiring.com/wp-content/uploads/qStudio.zip)
-
-Create a `.zip` archive of _qStudio.app_, then
-use the File Manager of the web hosting
-software to upload new versions.
+The application icon `.icns` family of icons were generated
+starting from a 1024x1024 pixel PNG icon using the
+[png-to-icns](https://github.com/BenSouchet/png-to-icns)
+script.
+Copy the resulting `.icns` file into this directory
+then rebuild the application bundle.
