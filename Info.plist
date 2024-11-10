@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>qStudio</string>
+    <string>Crusader-gui</string>
     <key>CFBundleDisplayName</key>
-    <string>qStudio.app</string>
+    <string>Crusader.app</string>
     <key>CFBundleIdentifier</key>
-    <string>com.TimeStored.qStudio</string>
+    <string>com.github.zoxc.crusader</string>
     <key>CFBundleShortVersionString</key>
-    <string>SOME-VERSION-THAT-WILL-BE-REPLACED</string>
+    <string>0.3.2</string>
     <key>CFBundleVersion</key>
     <string>Revision 1.0</string>
     <key>CFBundleExecutable</key>
-    <string>run-qstudio.sh</string>
+    <string>run-crusader.sh</string>
     <key>CFBundleIconFile</key>
-    <string>qStudio.icns</string>
+    <string>Crusader.icns</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
 </dict>

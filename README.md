@@ -1,38 +1,31 @@
-# Create qStudio.app - a clickable macOS app bundle
+# Create Crusader.app - a clickable macOS app bundle
 
-The [qStudio application](https://www.timestored.com/qstudio/prql-ide)
-is currently distributed as a `.jar` file.
-On macOS, people need to launch it from the command line.
-Furthermore, using
-[PRQL](https://prql-lang.org) requires the presence of
-the `prqlc` compiler.
-Installing the compiler is also difficult
-for people who are not
-comfortable with the command line.
+The [Crusader application](https://github.com/Zoxc/crusader)
+is currently distributed as a binary that opens a
+Terminal window.
+This is surprising, and doesn't provide any value.
 
-The _create-qstudio-macos-app.sh_ script solves those problems
+The _create-crusader-macos-app.sh_ script solves those problems
 by combining the required
 resources into a macOS application that can be downloaded
 and double-clicked.
 
 **Provisos:** One-time actions to use the app
 
-* Double-clicking the app launches qStudio as desired, but
+* Double-clicking the app launches Crusader as desired, but
   this app bundle is not signed.
   The Finder will produce an "unverified developer" warning.
   Go to **System Preference -> Security** to accept and open the app.
-* If the Mac does not already have Java installed, a message
-  will appear to the effect that "you must install a Java SDK"
-  and provide a link to the installer.
+
 
 ## How it works
 
-The script bundles the qStudio `.jar` file,
-the `prqlc` compilers for both for x86 and arm64 (Apple Silicon),
-an icon for the application,
+The script bundles the Crusader macOS binary
+both for x86 and arm64 (Apple Silicon),
+<!-- an icon for the application, -->
 and the necessary startup script.
 It also sets the Finder version info to
-the string "qStudio VERSION - prqlc VERSION". 
+the string "Crusader VERSION". 
 
 The build script runs on any Linux/macOS computer.
 In addition to the shell, it requires `python3`.
@@ -44,17 +37,16 @@ in the proper directory of the bundle.
 The final layout is:
 
 ```
-qStudio.app/
+Crusader.app/
 ├── Contents/
     ├── MacOS/
-    │   └── run-qstudio.sh
+    │   └── run-crusader.sh
     ├── Resources/
-    │   │── qstudio.jar
-    │   │── qStudio.icns
+    │   │── Crusader.icns
     │   |── arm64
-    │   |   └── prqlc
+    │   |   └── crusader-gui
     │   └── x86
-    │       └── prqlc  
+    │       └── crusader-gui  
     └── Info.plist
 
 ```

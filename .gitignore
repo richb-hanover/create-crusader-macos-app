@@ -1,6 +1,7 @@
 # Ignore...
-qStudio.app/*
+Crusader.app
+qStudio.app
 prqlc
 
 # ... and the zip'ed version for uploading
-qStudio.zip
+Crusader.zip
