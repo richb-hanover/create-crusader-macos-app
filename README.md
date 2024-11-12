@@ -87,9 +87,29 @@ macOS 15.0.1 (Intel)
 
 ## icns generation
 
-The application icon `.icns` family of icons were generated
-starting from a 1024x1024 pixel PNG icon using the
-[png-to-icns](https://github.com/BenSouchet/png-to-icns)
-script.
-Copy the resulting `.icns` file into this directory
-then rebuild the application bundle.
+There are several steps to produce the `.icns` file.
+The [png-to-icns]()
+script takes a 1024x1024 pixel PNG file and creates
+the `.icns` file with all the various size icons.
+
+But... the default Apple logo "style" is a rounded rectangle
+inset from the outer bounds by about 10%.
+The _Crusader-in-rrect.svg_ file is a good template.
+To use it:
+
+* Open the _Crusader-in-rrect.svg_ file in Inkscape
+  (or other vector drawing program).
+* Notice the black rounded rectangle surrounding the icon.
+  It is about 90% of the height/width of the full icon,
+  and has rounded corners.
+* Update the icon image inside the rounded-rectangld as needed.
+* Change the stroke for the rounded rectangle to "X" (none)
+  to make it invisible.
+* Save the file as `.svg`
+* Export as PNG: Select the "Page" tab, and ensure that the
+  border is a checkerboard, indicating that it's transparent.
+
+Copy the saved `.png` file to the _png-to-icns_ folder.
+Use this command: `sh ./png-to-icns.sh -i path-to-png`
+Rename the resulting `.icns` file, and move back to the
+desired folder.
