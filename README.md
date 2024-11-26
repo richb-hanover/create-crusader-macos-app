@@ -3,14 +3,14 @@
 The [Crusader application](https://github.com/Zoxc/crusader)
 is currently distributed as a binary that opens a
 Terminal window.
-This is surprising and doesn't provide any value
+This is surprising to users and doesn't provide any value
 because all the information that would appear in the Terminal
 is also logged within Crusader.
 
 The _create-crusader-macos-app.sh_ script solves those problems
-by combining the required
-resources into a macOS application that can be downloaded
+by creating a macOS application that can be downloaded
 and double-clicked.
+That bundle also hides the Terminal window.
 
 **Provisos:** One-time actions to use the app
 
@@ -55,6 +55,14 @@ Crusader.app/
     └── Info.plist
 
 ```
+
+_Note:_ The _CFBundleVersion.txt_ file contains the current 
+value placed in the `CFBundleVersion` key of the _Info.plist_ file.
+This is incremented each time the app gets rebuilt.
+This helps the Finder on the destination machine to recognize that
+it should re-read the meta-data (including the Info string).
+If multiple machines are building the app, be sure to push to the main
+repo and pull before building on another build machine. 
 
 ## Usage
 

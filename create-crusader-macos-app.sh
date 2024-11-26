@@ -13,6 +13,18 @@
 APP_BUNDLE_NAME="Crusader.app"
 CRUSADER_VERSION="0.3.2"
 
+VERSION_FILE="CFBundleVersion.txt"
+if [[ -f "$VERSION_FILE" ]]; then
+  CURRENT_VERSION=$(cat "$VERSION_FILE")
+else
+  echo "Version file not found!"
+  exit 1
+fi
+# Increment the version
+NEW_VERSION=$((CURRENT_VERSION + 1))
+# Update the version file
+echo "$NEW_VERSION" > "$VERSION_FILE"
+
 # Crusader downloads are at: 
 # https://github.com/Zoxc/crusader/releases/download/v0.3.2/Crusader-macOS-ARM-64-bit.tar.gz
 # https://github.com/Zoxc/crusader/releases/download/v0.3.2/Crusader-macOS-X86-64-bit.tar.gz
@@ -45,9 +57,9 @@ chmod +x "$APP_BUNDLE_NAME/Contents/MacOS/run-crusader.sh"
 # Copy in the Info.plist & update short version string
 echo "Updating Info.plist"
 cp Info.plist "$APP_BUNDLE_NAME/Contents"
-NEW_VERSION="Crusader $CRUSADER_VERSION"
+INFO_STRING="Crusader $CRUSADER_VERSION"
 plist_path="$APP_BUNDLE_NAME/Contents/Info.plist"
-python3 ./update_plist.py "$plist_path" "$NEW_VERSION"
+python3 ./update_plist.py "$plist_path" "$INFO_STRING" "$NEW_VERSION"
 
 # Copy in the .icns file
 echo "Adding .icns"
