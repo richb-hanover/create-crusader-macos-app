@@ -1,5 +1,8 @@
 # Ignore...
 Crusader.app
+arm-binaries/
+x860binaries/
+crusader-univ
 
 # ... and the zip'ed version for uploading
 Crusader.zip
