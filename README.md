@@ -97,7 +97,7 @@ macOS 15.0.1 (Intel)
 ## icns generation
 
 There are several steps to produce the `.icns` file.
-The [png-to-icns]()
+The [png-to-icns](https://github.com/BenSouchet/png-to-icns)
 script takes a 1024x1024 pixel PNG file and creates
 the `.icns` file with all the various size icons.
 
