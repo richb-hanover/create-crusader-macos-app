@@ -30,9 +30,10 @@ and the necessary startup script.
 It also sets the Finder version info to
 the string "Crusader VERSION". 
 
-The build script runs on any Linux/macOS computer.
+The build script runs on any macOS computer.
 In addition to the shell, it requires `python3`.
-It is not tied to any macOS-specific utilities.
+It requires the `lipo` macOS-specific utility.
+There may be Linux equivalents to `lipo`.
 
 The script downloads current versions of all the resources
 from canonical URLs and places them
